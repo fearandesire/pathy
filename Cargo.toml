@@ -1,0 +1,13 @@
+[package]
+name = "ftree"
+version = "1.0.0"
+authors = ["fenix <fenix@fearandesire.com>"]
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] }
+walkdir = "2.3.2"
+
+[[bin]]
+name = "ftree"
+path = "src/main.rs"
