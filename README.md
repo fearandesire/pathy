@@ -5,7 +5,7 @@ Minimal Rust-based CLI tool to display directory structures
 
 ## Features
 - 🧠 **Smart Display**: Automatically excludes commonly ignored directories (like `.git` and `node_modules`) for a cleaner tree visualization.
-- 👨‍🦯 **Easy Exclusions**: Use the `--ignore` option to seamlessly omit any specific directories from the display.
+- 👨‍🦯 **Easy Exclusions**: Use the `-i` option to seamlessly omit any specific directories & files from the display.
 
 
 ## Install
@@ -20,8 +20,8 @@ cargo build --release
 # Usage
 Basic usage: `pathy <directory>`
 ## Arguments
-- `<directory>`: Directory to display
-- `-i`, or `--ignore`: Specify a directory to ignore. Each directory must be specified with `-i`
+- `<directory>`: Directory to display. _Defaults to the current directory._
+- `-i`, or `--ignore`: Specify directories or files to ignore`
 ## Default Ignored Directories
 By default, pathy will ignore the following directories:
 ```
@@ -40,8 +40,11 @@ pathy .
 # Ignoring a directory
 pathy -i docs
 # Ignoring multiple directories
-pathy -i docs -i node_modules .
+pathy -i docs node_modules .
+# Ignore a directory and a any file 
+pathy -i docs README.md
 ```
+> **Notice:** Ignoring a directory / a file will explicitly exclude any exact match. E.g, ignoring `-i README.md` will ignore `README.md` from the file tree visualization entirely, no matter how far down it is.
 
 ## Contributing
 
