@@ -5,7 +5,7 @@ Minimal Rust CLI tool to display directory structures
 )
 ![maintenance status badge: as-is](https://badgen.net/static/status/as-is/orange)
 ---
-![pathy example screenshot](https://i.imgur.com/xiBe1yp.png)
+![pathy example screenshot](https://i.imgur.com/pkDS7bw.png)
 ## Features
 - 🧠 **Smart Display**: Automatically excludes commonly [ignored directories](src/config.rs) (e.g `.git` and `node_modules`) for a cleaner tree visualization.
 - 👨‍🦯 **Easy Exclusions**: Use the `-i` option to seamlessly omit any specific directories & files from the display.
