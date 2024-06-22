@@ -16,9 +16,10 @@ cargo install pathy
 ```
 ### via Source
 ```sh
-git clone https://github.com/yourusername/pathy.git
+git clone https://github.com/fearandesire/pathy.git
 cd pathy
 cargo build --release
+cargo install .
 ```
 
 # Usage
