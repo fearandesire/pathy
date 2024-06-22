@@ -52,7 +52,7 @@ fn main() {
 
 fn pretty_print(prefix: &str, is_last: bool, name: &str) {
     let connector = if is_last { "└" } else { "├" };
-    let icon = if name.contains('.') { "📜" } else { "📂" };
+    let icon = if name.contains('.') { "✱" } else { "📂" };
     println!("{}{} {} {}", prefix, connector, icon, name);
 }
 
