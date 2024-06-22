@@ -7,7 +7,6 @@ description = "A CLI tool to display the file tree of a directory"
 categories = ["command-line-utilities", "filesystem", "development-tools"]
 keywords = ["cli", "visualization", "path",  "pathy", "tree"]
 license = "MIT"
-homepage = "https://blog.fearandesire.com"
 repository = "https://github.com/fearandesire/pathy"
 readme = "README.md"
 
