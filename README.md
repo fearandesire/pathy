@@ -1,15 +1,19 @@
 # pathy
 Minimal Rust-based CLI tool to display directory structures
 
+![maintenance status badge: as-is](https://badgen.net/static/status/as-is/orange)
+![version badge](https://img.shields.io/crates/v/pathy?labelColor=%23e77823&color=%23002fff
+)
+
 ![pathy example screenshot](https://i.imgur.com/xiBe1yp.png)
-
 ## Features
-- 🧠 **Smart Display**: Automatically excludes commonly ignored directories (like `.git` and `node_modules`) for a cleaner tree visualization.
+- 🧠 **Smart Display**: Automatically excludes commonly [ignored directories](src/config.rs) (e.g `.git` and `node_modules`) for a cleaner tree visualization.
 - 👨‍🦯 **Easy Exclusions**: Use the `-i` option to seamlessly omit any specific directories & files from the display.
-
-
 ## Install
 ### via Cargo
+```sh
+cargo install pathy
+```
 ### via Source
 ```sh
 git clone https://github.com/yourusername/pathy.git
