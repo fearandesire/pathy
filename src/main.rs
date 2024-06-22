@@ -8,7 +8,7 @@ use crate::config::ignored_directories;
 
 fn main() {
     let matches = Command::new("pathy")
-        .version("0.1")
+        .version("1.0.0")
         .author("fenix <fenix@fearandesire.com>")
         .about("Displays the file tree of a directory")
         .arg(

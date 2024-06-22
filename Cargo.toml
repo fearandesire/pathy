@@ -1,6 +1,6 @@
 [package]
 name = "pathy"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["fenix <fenix@fearandesire.com>"]
 edition = "2021"
 description = "A CLI tool to display the file tree of a directory"
