@@ -3,6 +3,10 @@ name = "ftree"
 version = "1.0.0"
 authors = ["fenix <fenix@fearandesire.com>"]
 edition = "2021"
+description = "A CLI tool to display the file tree of a directory"
+license = "MIT"
+repository = "https://github.com/fearandesire/ftree"
+readme = "README.md"
 
 [dependencies]
 clap = { version = "4.0", features = ["derive"] }
