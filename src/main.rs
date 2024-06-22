@@ -1,16 +1,16 @@
-use clap::{Arg, ArgAction, Command};
+use clap::{Arg, Command};
+use std::env;
 use std::path::Path;
 use walkdir::WalkDir;
 
 fn main() {
-    let matches = Command::new("Ftree")
-        .version("1.0")
+    let matches = Command::new("pathy")
+        .version("0.1")
         .author("fenix <fenix@fearandesire.com>")
         .about("Displays the file tree of a directory")
         .arg(
             Arg::new("DIRECTORY")
-                .help("The directory to display the file tree for")
-                .required(true)
+                .help("The directory to display the file tree for (default: current directory)")
                 .index(1),
         )
         .arg(
@@ -18,18 +18,20 @@ fn main() {
                 .help("Directories to ignore")
                 .short('i')
                 .long("ignore")
-                .action(ArgAction::Append)
+                .action(clap::ArgAction::Append)
                 .value_parser(clap::value_parser!(String)),
         )
         .get_matches();
 
-    let directory = matches.get_one::<String>("DIRECTORY").unwrap();
+    let directory = matches
+        .get_one::<String>("DIRECTORY")
+        .map(|s| s.as_str())
+        .unwrap_or(".");
 
     let mut ignore_dirs: Vec<String> = matches
         .get_many::<String>("ignore")
-        .unwrap_or_default()
-        .map(|s| s.to_string())
-        .collect();
+        .map(|values| values.cloned().collect())
+        .unwrap_or_default();
 
     ignore_dirs.extend_from_slice(&[
         ".git".to_string(),
@@ -41,12 +43,16 @@ fn main() {
         ".npmrc".to_string(),
     ]);
 
-    let path = Path::new(directory);
+    let path = if directory == "." {
+        env::current_dir().expect("Failed to get current directory")
+    } else {
+        Path::new(directory).to_path_buf()
+    };
 
     if path.is_dir() {
-        print_file_tree(path, 0, &ignore_dirs);
+        print_file_tree(&path, 0, &ignore_dirs);
     } else {
-        eprintln!("Error: {} is not a directory", directory);
+        eprintln!("Error: {} is not a directory", path.display());
     }
 }
 
