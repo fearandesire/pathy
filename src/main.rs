@@ -1,7 +1,10 @@
+mod config;
+
 use clap::{Arg, Command};
 use std::env;
 use std::path::Path;
 use walkdir::WalkDir;
+use crate::config::ignored_directories;
 
 fn main() {
     let matches = Command::new("pathy")
@@ -15,7 +18,7 @@ fn main() {
         )
         .arg(
             Arg::new("ignore")
-                .help("Directories to ignore")
+                .help("Directories or files to ignore")
                 .short('i')
                 .long("ignore")
                 .action(clap::ArgAction::Append)
@@ -33,16 +36,7 @@ fn main() {
         .map(|values| values.cloned().collect())
         .unwrap_or_default();
 
-    ignore_dirs.extend_from_slice(&[
-        ".git".to_string(),
-        ".idea".to_string(),
-        "node_modules".to_string(),
-        "target".to_string(),
-        "dist".to_string(),
-        ".vscode".to_string(),
-        ".npmrc".to_string(),
-    ]);
-
+    ignore_dirs.extend(ignored_directories());
     let path = if directory == "." {
         env::current_dir().expect("Failed to get current directory")
     } else {
