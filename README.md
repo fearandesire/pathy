@@ -1,4 +1,4 @@
-# pathy 🦀
+# [pathy](https://github.com/fearandesire/pathy) 🦀
 Minimal Rust CLI tool to display directory structures
 
 ![version badge](https://img.shields.io/crates/v/pathy?labelColor=%23e77823&color=%23002fff
